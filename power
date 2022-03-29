@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+# Author: Xiaoyu Zhou
+# Date: 3/10/2022
+# UWNetID: xz081302
+# Git Extra Credit
+# This script will the calculate the $1 raised to the power $2
+
+# If the script is not suppiled with an input argument, print a usage note to stderr and exit with a code of 1
+if [ ! $# -eq 2 ] ;
+then
+  echo "$0 incorrect number of input" 1>&2
+  exit 1
+fi
+
+if [ $2 -lt 0 ] ;
+then
+	power=$(($2*-1))
+	result=1
+  for (( i=1; i<=$power; i++))
+  do
+		result=$(($result*$1))
+	done
+	result=1/$result
+	echo "$1**$2=$result"
+else
+	result=1
+	for (( i=1; i<=$2; i++))
+	do
+		result=$(($result*$1))
+	done
+	echo "$1**$2=$result"
+fi
